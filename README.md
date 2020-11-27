@@ -3,7 +3,7 @@ WebViewJavascriptBridge
 
 [![Circle CI](https://img.shields.io/circleci/project/github/marcuswestin/WebViewJavascriptBridge.svg)](https://circleci.com/gh/marcuswestin/WebViewJavascriptBridge)
 
-An iOS/OSX bridge for sending messages between Obj-C and JavaScript in WKWebViews, UIWebViews & WebViews.
+An iOS/OSX bridge for sending messages between Obj-C and JavaScript in WKWebViews,  WebViews.
 
 Migration Guide
 ---------------
@@ -68,7 +68,7 @@ Usage
 @property WebViewJavascriptBridge* bridge;
 ```
 
-2) Instantiate WebViewJavascriptBridge with a WKWebView, UIWebView (iOS) or WebView (OSX):
+2) Instantiate WebViewJavascriptBridge with a WKWebView, WebView (OSX):
 
 ```objc
 self.bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
@@ -142,7 +142,7 @@ API Reference
 
 ### ObjC API
 
-##### `[WebViewJavascriptBridge bridgeForWebView:(WKWebVIew/UIWebView/WebView*)webview`
+##### `[WebViewJavascriptBridge bridgeForWebView:(WKWebVIew/WebView*)webview`
 
 Create a javascript bridge for the given web view.
 
@@ -178,13 +178,13 @@ Example:
 ```objc
 [self.bridge callHandler:@"showAlert" data:@"Hi from ObjC to JS!"];
 [self.bridge callHandler:@"getCurrentPageUrl" data:nil responseCallback:^(id responseData) {
-	NSLog(@"Current UIWebView page URL is: %@", responseData);
+	NSLog(@"Current WebView page URL is: %@", responseData);
 }];
 ```
 
 #### `[bridge setWebViewDelegate:(id)webViewDelegate]`
 
-Optionally, set a `WKNavigationDelegate/UIWebViewDelegate` if you need to respond to the [web view's lifecycle events](https://developer.apple.com/reference/uikit/uiwebviewdelegate).
+Optionally, set a `WKNavigationDelegate` if you need to respond to the [web view's lifecycle events](https://developer.apple.com/reference/uikit).
 
 ##### `[bridge disableJavscriptAlertBoxSafetyTimeout]`
 
